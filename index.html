@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AIConnect.pi – AI Hub for Pi Network</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Favicon + App Icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="app-icon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="app-icon-180.png">
+
+  <!-- jsPDF for PDF receipts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <img src="logo.png" alt="AIConnect.pi Logo" class="logo" />
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#tools">Tools</a>
+      <a href="#marketplace">Marketplace</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button id="loginBtn">Login with Pi</button>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>AIConnect.pi</h1>
+    <p>Connect. Automate. Earn. Build with AI and Pi.</p>
+    <button class="cta">Explore AI Tools</button>
+    <button class="cta secondary">Upgrade to Pro</button>
+  </section>
+
+  <!-- Features -->
+  <section id="features">
+    <h2>Core Features</h2>
+    <div class="feature-grid">
+      <div class="card"><h3>Pi SDK Authentication</h3></div>
+      <div class="card"><h3>Pi Payments</h3></div>
+      <div class="card"><h3>AI Tools Marketplace</h3></div>
+      <div class="card"><h3>Business Automation</h3></div>
+      <div class="card"><h3>Developer Monetization</h3></div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing">
+    <h2>Subscription Plans</h2>
+    <div class="pricing-grid">
+      <div class="plan">Free – 0 Pi</div>
+      <div class="plan">Pro – 5 Pi/month</div>
+      <div class="plan">Business – 15 Pi/month</div>
+      <div class="plan">Enterprise – 50 Pi/month</div>
+    </div>
+  </section>
+
+  <!-- Tools -->
+  <section id="tools" class="tools">
+    <h2>Featured AI Tools</h2>
+    <div class="tool-grid">
+      <div class="tool-card">
+        <h3>AI Writer</h3>
+        <p>Generate articles, proposals, and social posts.</p>
+        <button class="btn">Launch</button>
+      </div>
+      <div class="tool-card">
+        <h3>AI Logistics Assistant</h3>
+        <p>Plan routes, estimate costs, and dispatch schedules.</p>
+        <button class="btn">Launch</button>
+      </div>
+      <div class="tool-card">
+        <h3>AI Domain Assistant</h3>
+        <p>Valuate domains, set lease prices, and create listings.</p>
+        <button class="btn">Launch</button>
+      </div>
+      <div class="tool-card">
+        <h3>AI Business Consultant</h3>
+        <p>Build business plans, cash flow projections, and strategies.</p>
+        <button class="btn">Launch</button>
+      </div>
+      <div class="tool-card">
+        <h3>AI Contract Generator</h3>
+        <p>Create agreements, NDAs, and employment contracts.</p>
+        <button class="btn">Launch</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marketplace -->
+  <section id="marketplace">
+    <h2>AI Marketplace</h2>
+    <p>Sell templates, lease domains, and offer freelance services.</p>
+  </section>
+
+  <!-- Demo -->
+  <section id="demo" class="demo">
+    <h2>See AIConnect.pi in Action</h2>
+    <p>Watch how AIConnect.pi empowers businesses and pioneers with AI + Pi.</p>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="AIConnect.pi Demo Video" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <form id="contactForm" action="https://formspree.io/f/abcd1234" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+    <p id="formStatus"></p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 AIConnect.pi | Powered by Pi Network</p>
+  </footer>
+
+  <!-- Tool Modal -->
+  <div id="toolModal" class="modal">
+    <div class="modal-content">
+      <span id="closeModal" class="close">&times;</span>
+      <h2 id="modalTitle"></h2>
+      <p id="modalDescription"></p>
+      <div id="writerDemo" style="display:none;">
+        <textarea id="writerInput" placeholder="Enter a topic..."></textarea>
+        <button id="generateBtn" class="btn">Generate Text</button>
+        <div id="writerOutput"></div>
+      </div>
+      <button id="demoBtn" class="btn">Try Demo</button>
+    </div>
+  </div>
+
+  <!-- Subscription Modal -->
+  <div id="subModal" class="modal">
+    <div class="modal-content">
+      <span id="closeSubModal" class="close">&times;</span>
+      <h2 id="subTitle"></h2>
+      <div id="subStep1">
+        <p id="subDescription"></p>
+        <button id="nextStepBtn" class="btn">Continue</button>
+      </div>
+      <div id="subStepQR" style="display:none;">
+        <p>Scan this QR code with your Pi app to initiate payment:</p>
+        <div class="qr-box">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=pi-payment-demo" alt="Pi Payment QR">
+        </div>
+        <button id="qrNextBtn" class="btn">I’ve Scanned</button>
+      </div>
+      <div id="subStep2" style="display:none;">
+        <p>Confirm your Pi payment for this plan.</p>
+        <button id="confirmBtn" class="btn">Confirm Payment</button>
+      </div>
+      <div id="subStep3" style="display:none;">
+        <h3>✅ Subscription successful!</h3>
+        <p>You are now subscribed.</p>
+        <div class="receipt" id="receiptBox"></div>
+        <button id="downloadBtn" class="btn">Download Receipt (PDF)</button>
+        <button id="doneBtn" class="btn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+</body>
+</html>
