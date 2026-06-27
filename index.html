@@ -13,6 +13,9 @@
 
   <!-- jsPDF for PDF receipts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <!-- Pi SDK -->
+  <script src="https://sdk.minepi.com/pi-sdk.js"></script>
 </head>
 <body>
   <!-- Header -->
@@ -170,5 +173,23 @@
 
   <!-- Script -->
   <script src="script.js"></script>
+
+  <!-- Pi SDK Init -->
+  <script>
+    // Initialize Pi SDK
+    Pi.init({ version: "2.0" });
+
+    // Login button handler
+    document.getElementById("loginBtn").addEventListener("click", async () => {
+      try {
+        const auth = await Pi.authenticate(["payments"], (authResult) => {
+          console.log("Authenticated:", authResult);
+          alert("Logged in with Pi!");
+        });
+      } catch (err) {
+        console.error("Pi login failed:", err);
+      }
+    });
+  </script>
 </body>
 </html>
